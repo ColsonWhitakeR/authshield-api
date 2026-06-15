@@ -1,0 +1,16 @@
+const jwt = require("jsonwebtoken");
+
+function generateToken(user) {
+  return jwt.sign(
+    { id: user.id, email: user.email },
+    "secret_key",
+    { expiresIn: "1h" }
+  );
+}
+
+const token = generateToken({
+  id: 1,
+  email: "user@example.com"
+});
+
+console.log(token);
